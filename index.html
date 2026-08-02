@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ishita Singh — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2EFE6;
+    --paper-line:#DAD4C3;
+    --ink:#1E2420;
+    --ink-soft:#4B5049;
+    --indigo:#3B3F8C;
+    --indigo-soft:#8A8DC4;
+    --sage:#6E8A72;
+    --stamp-red:#A23B2E;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    background-image:
+      linear-gradient(var(--paper-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--paper-line) 1px, transparent 1px);
+    background-size: 100% 32px, 32px 100%;
+    background-position: 0 0;
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+  a{color:inherit;}
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(242,239,230,0.88);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--paper-line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:920px; margin:0 auto;
+  }
+  .brand{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; letter-spacing:0.06em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .brand .dot{width:6px;height:6px;border-radius:50%;background:var(--stamp-red);display:inline-block;}
+  .nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
+  .nav a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; text-decoration:none; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--ink-soft); border-bottom:1px solid transparent; padding-bottom:2px;
+    transition:color .2s, border-color .2s;
+  }
+  .nav a:hover{color:var(--indigo); border-color:var(--indigo);}
+  .nav-toggle{display:none;}
+
+  /* ---------- hero ---------- */
+  .hero{padding:110px 0 70px; position:relative;}
+  .ledger-no{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft);
+    letter-spacing:0.12em; margin-bottom:22px; display:flex; align-items:center; gap:10px;
+  }
+  .ledger-no::before{content:""; width:34px; height:1px; background:var(--ink-soft); display:inline-block;}
+  h1{
+    font-family:'Fraunces', serif; font-weight:500; font-size:clamp(42px, 7vw, 76px);
+    line-height:1.02; margin:0 0 18px; letter-spacing:-0.01em;
+  }
+  h1 em{font-style:italic; font-weight:300; color:var(--indigo);}
+  .hero-role{
+    font-family:'IBM Plex Mono', monospace; font-size:14px; color:var(--ink-soft);
+    max-width:520px; line-height:1.7; margin:0 0 34px;
+  }
+  .hero-stamp{
+    display:inline-flex; align-items:center; gap:10px; margin-bottom:44px;
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--stamp-red);
+    border:1px solid var(--stamp-red); padding:6px 12px; border-radius:var(--radius);
+    transform:rotate(-1.2deg);
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono', monospace; font-size:13px; text-decoration:none;
+    padding:12px 22px; border-radius:var(--radius); letter-spacing:0.03em;
+    transition:transform .15s, background .2s, color .2s;
+    display:inline-block;
+  }
+  .btn-primary{background:var(--ink); color:var(--paper);}
+  .btn-primary:hover{background:var(--indigo); transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--ink); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--indigo); color:var(--indigo); transform:translateY(-1px);}
+
+  /* ---------- section shell ---------- */
+  section{padding:64px 0;}
+  .section-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:38px;
+  }
+  .section-num{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--indigo-soft);}
+  .section-title{
+    font-family:'Fraunces', serif; font-weight:500; font-size:30px; margin:0;
+  }
+  .rule{height:1px; background:var(--paper-line); flex:1;}
+
+  /* ---------- about ---------- */
+  .about-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:56px; align-items:start;}
+  .about p{font-size:16px; line-height:1.85; color:var(--ink-soft); margin:0 0 16px;}
+  .about strong{color:var(--ink); font-weight:600;}
+  .fact-sheet{
+    border:1px solid var(--paper-line); border-radius:var(--radius); padding:22px 24px;
+    background:rgba(255,255,255,0.35);
+  }
+  .fact-row{
+    display:flex; justify-content:space-between; gap:12px; padding:10px 0;
+    border-bottom:1px solid var(--paper-line); font-size:13px;
+  }
+  .fact-row:last-child{border-bottom:none;}
+  .fact-label{font-family:'IBM Plex Mono', monospace; color:var(--ink-soft); text-transform:uppercase; letter-spacing:0.05em; font-size:11px;}
+  .fact-val{text-align:right; font-weight:500;}
+
+  /* ---------- ledger (experience/education) ---------- */
+  .ledger-entry{
+    display:grid; grid-template-columns:90px 1fr; gap:24px;
+    padding:26px 0; border-bottom:1px solid var(--paper-line);
+    opacity:0; transform:translateY(14px);
+    animation:rise .6s ease forwards;
+  }
+  .ledger-entry:first-child{border-top:1px solid var(--paper-line);}
+  @keyframes rise{to{opacity:1; transform:translateY(0);}}
+  .entry-date{font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); padding-top:3px;}
+  .entry-role{font-family:'Fraunces', serif; font-size:20px; font-weight:600; margin:0 0 4px;}
+  .entry-org{font-size:14px; color:var(--indigo); margin:0 0 10px; font-weight:500;}
+  .entry-desc{font-size:14.5px; line-height:1.75; color:var(--ink-soft); margin:0;}
+  .entry-tags{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+  .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; padding:3px 9px;
+    border:1px solid var(--paper-line); border-radius:20px; color:var(--ink-soft);
+  }
+
+  /* ---------- projects ---------- */
+  .projects{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .project-card{
+    border:1px solid var(--paper-line); border-radius:var(--radius); padding:28px;
+    background:rgba(255,255,255,0.35); position:relative; overflow:hidden;
+    transition:border-color .25s, transform .25s;
+  }
+  .project-card:hover{border-color:var(--indigo); transform:translateY(-3px);}
+  .project-index{
+    font-family:'IBM Plex Mono', monospace; font-size:44px; color:var(--paper-line);
+    position:absolute; top:8px; right:16px; font-weight:500; line-height:1; user-select:none;
+  }
+  .project-card h3{font-family:'Fraunces', serif; font-size:22px; margin:0 0 6px; font-weight:600; max-width:80%;}
+  .project-sub{font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:var(--sage); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:14px;}
+  .project-card p{font-size:14px; line-height:1.75; color:var(--ink-soft); margin:0 0 16px;}
+  .stack{display:flex; flex-wrap:wrap; gap:8px;}
+  .stack span{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink);
+    background:var(--paper); border:1px solid var(--paper-line); padding:3px 9px; border-radius:20px;
+  }
+
+  /* ---------- skills ---------- */
+  .skills-band{
+    display:flex; flex-wrap:wrap; gap:12px;
+  }
+  .skill-chip{
+    font-family:'IBM Plex Mono', monospace; font-size:13px;
+    padding:9px 16px; border:1px solid var(--ink); border-radius:var(--radius);
+    transition:background .2s, color .2s;
+  }
+  .skill-chip:hover{background:var(--ink); color:var(--paper);}
+  .cert-line{
+    margin-top:30px; padding-top:24px; border-top:1px solid var(--paper-line);
+    display:flex; gap:18px; align-items:flex-start;
+  }
+  .cert-mark{
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--stamp-red);
+    border:1px solid var(--stamp-red); padding:4px 8px; border-radius:var(--radius); white-space:nowrap;
+  }
+  .cert-line p{font-size:14px; color:var(--ink-soft); line-height:1.75; margin:0;}
+
+  /* ---------- contact / footer ---------- */
+  footer{padding:80px 0 60px; border-top:1px solid var(--paper-line); margin-top:20px;}
+  .contact-title{
+    font-family:'Fraunces', serif; font-size:clamp(30px,5vw,48px); font-weight:500; margin:0 0 24px; max-width:600px;
+  }
+  .contact-title em{font-style:italic; color:var(--indigo); font-weight:300;}
+  .contact-links{display:flex; gap:14px; flex-wrap:wrap; margin-top:10px;}
+  .foot-note{
+    margin-top:56px; font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  @media (max-width: 760px){
+    .nav ul{display:none;}
+    .about-grid{grid-template-columns:1fr;}
+    .projects{grid-template-columns:1fr;}
+    .ledger-entry{grid-template-columns:1fr; gap:6px;}
+  }
+
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="brand"><span class="dot"></span>ISHITA SINGH</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="ledger-no">FILE NO. 001 — OPENING STATEMENT</div>
+    <h1>Building things that<br><em>analyze,</em> generate,<br>and hold up under audit.</h1>
+    <p class="hero-role">CS engineering student at VIT Chennai, currently working as an Associate Consultant Intern — moving between data reporting by day and generative AI / blockchain builds on the side.</p>
+    <div><span class="hero-stamp">● CGPA 8.27 — VERIFIED</span></div>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">Review the work</a>
+      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="section-head"><span class="section-num">002</span><h2 class="section-title">About</h2><div class="rule"></div></div>
+    <div class="about-grid reveal">
+      <div class="about">
+        <p>I'm a fourth-year <strong>B.Tech Computer Science and Engineering</strong> student at Vellore Institute of Technology, Chennai. My work sits at an odd but useful intersection: structured, client-facing data analysis on one side, and experimental builds in generative AI and blockchain on the other.</p>
+        <p>At <strong>Chiacon Consulting</strong>, that means turning raw data into reporting a client can act on. Outside of that, it means shipping things like an AI co-writer and a lending protocol from scratch — mostly to understand how the underlying systems actually behave, not just how to call their APIs.</p>
+      </div>
+      <div class="fact-sheet">
+        <div class="fact-row"><span class="fact-label">Institution</span><span class="fact-val">VIT Chennai</span></div>
+        <div class="fact-row"><span class="fact-label">Program</span><span class="fact-val">B.Tech, CSE</span></div>
+        <div class="fact-row"><span class="fact-label">Duration</span><span class="fact-val">Aug 2023 — Present</span></div>
+        <div class="fact-row"><span class="fact-label">CGPA</span><span class="fact-val">8.27</span></div>
+        <div class="fact-row"><span class="fact-label">Current role</span><span class="fact-val">Associate Consultant Intern</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head"><span class="section-num">003</span><h2 class="section-title">Experience</h2><div class="rule"></div></div>
+    <div class="reveal">
+      <div class="ledger-entry" style="animation-delay:.05s">
+        <div class="entry-date">JUN 2026 —<br>PRESENT</div>
+        <div>
+          <h3 class="entry-role">Associate Consultant Intern</h3>
+          <p class="entry-org">Chiacon Consulting Pvt. Ltd.</p>
+          <p class="entry-desc">Handling data analysis and reporting for client-facing consulting deliverables — translating raw datasets into structured output that consultants and clients can act on directly.</p>
+          <div class="entry-tags"><span class="tag">Data Analysis</span><span class="tag">Reporting</span><span class="tag">Client Deliverables</span></div>
+        </div>
+      </div>
+      <div class="ledger-entry" style="animation-delay:.15s">
+        <div class="entry-date">CERT.<br>2026</div>
+        <div>
+          <h3 class="entry-role">IBM Generative AI Certification</h3>
+          <p class="entry-org">IBM</p>
+          <p class="entry-desc">Covered GANs, transformer-based large language models, and generative model architectures — the theory backing the AI tooling used in current project work.</p>
+          <div class="entry-tags"><span class="tag">GANs</span><span class="tag">Transformers</span><span class="tag">Generative Models</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head"><span class="section-num">004</span><h2 class="section-title">Projects</h2><div class="rule"></div></div>
+    <div class="projects reveal">
+      <div class="project-card">
+        <span class="project-index">01</span>
+        <h3>StoryWeaver</h3>
+        <div class="project-sub">AI Story-Continuation Web App</div>
+        <p>A web app that picks up where a writer leaves off — built on Flask with Google Gemini Pro handling the generative continuation, so the story keeps its voice and thread across turns.</p>
+        <div class="stack"><span>Python</span><span>Flask</span><span>Google Gemini Pro</span></div>
+      </div>
+      <div class="project-card">
+        <span class="project-index">02</span>
+        <h3>Decentralized Lending Protocol</h3>
+        <div class="project-sub">DeFi Smart Contract System</div>
+        <p>A lending protocol written in Solidity and deployed to Ethereum Sepolia, built on OpenZeppelin's audited contract standards to keep the lending logic safe by construction.</p>
+        <div class="stack"><span>Solidity</span><span>OpenZeppelin</span><span>Ethereum Sepolia</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head"><span class="section-num">005</span><h2 class="section-title">Skills</h2><div class="rule"></div></div>
+    <div class="reveal">
+      <div class="skills-band">
+        <span class="skill-chip">Java</span>
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">C / C++</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">React</span>
+        <span class="skill-chip">Node.js</span>
+        <span class="skill-chip">Flask</span>
+        <span class="skill-chip">Solidity</span>
+        <span class="skill-chip">MySQL</span>
+        <span class="skill-chip">PostgreSQL</span>
+        <span class="skill-chip">Docker</span>
+      </div>
+      <div class="cert-line">
+        <span class="cert-mark">CERTIFIED</span>
+        <p>IBM Generative AI — GANs, transformer-based LLMs, and generative model architectures.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2 class="contact-title">Have a role, a project,<br>or a good problem? <em>Let's talk.</em></h2>
+    <div class="contact-links">
+      <a href="mailto:ishi.ishitasingh@gmail.com" class="btn btn-primary">ishi.ishitasingh@gmail.com</a>
+      <a href="https://www.linkedin.com/in/ishita-singh-8132a4293" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn ↗</a>
+      <a href="https://github.com/Ishita-Singh-12" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
+    </div>
+    <div class="foot-note">
+      <span>ISHITA SINGH — PORTFOLIO</span>
+      <span>VIT CHENNAI · CSE · CLASS OF 2027</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
