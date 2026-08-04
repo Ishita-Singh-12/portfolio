@@ -147,7 +147,7 @@
   }
 
   /* ---------- projects ---------- */
-  .projects{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .projects{display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;}
   .project-card{
     border:1px solid var(--paper-line); border-radius:var(--radius); padding:28px;
     background:rgba(255,255,255,0.35); position:relative; overflow:hidden;
@@ -199,6 +199,9 @@
     display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
   }
 
+  @media (max-width: 900px){
+    .projects{grid-template-columns:1fr 1fr;}
+  }
   @media (max-width: 760px){
     .nav ul{display:none;}
     .about-grid{grid-template-columns:1fr;}
@@ -295,6 +298,13 @@
         <div class="project-sub">DeFi Smart Contract System</div>
         <p>A lending protocol written in Solidity and deployed to Ethereum Sepolia, built on OpenZeppelin's audited contract standards to keep the lending logic safe by construction.</p>
         <div class="stack"><span>Solidity</span><span>OpenZeppelin</span><span>Ethereum Sepolia</span></div>
+      </div>
+      <div class="project-card">
+        <span class="project-index">03</span>
+        <h3>Human Digital Twin Health Monitoring System</h3>
+        <div class="project-sub">WearOS Health Monitoring</div>
+        <p>A WearOS-based system that tracks user health data and reflects it through a digital twin model, built with Kotlin on the device side and Appwrite/NextJS on the backend and web layers.</p>
+        <div class="stack"><span>Kotlin</span><span>Appwrite</span><span>NextJS</span></div>
       </div>
     </div>
   </section>
